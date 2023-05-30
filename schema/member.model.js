@@ -10,6 +10,7 @@ const memberSchema = new mongoose.Schema({
     mb_phone: {
         type: String,
         required: true,
+        index: {unique: true, sparse: true},
     },
     mb_password: {
         type: String,
@@ -36,7 +37,7 @@ const memberSchema = new mongoose.Schema({
     },
     mb_address: {
         type: String,
-        required: true,
+        required: false,
     },
     mb_description: {
         type: String,

@@ -4,7 +4,6 @@ const memberController = require("./controllers/memberController")
 
 
 // Routers related to member
-router.get("/", memberController.home)
 router.post("/signup", memberController.signup)
 router.post("/login", memberController.login)
 router.get("/logout", memberController.logout)
