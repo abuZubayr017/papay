@@ -3,11 +3,15 @@ const router = express.Router();
 const memberController = require("./controllers/memberController")
 
 
+/****************
+ *   REST API   *
+****************/
+
+
 // Routers related to member
 router.post("/signup", memberController.signup)
 router.post("/login", memberController.login)
 router.get("/logout", memberController.logout)
-
 
 
 // other routers
