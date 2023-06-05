@@ -29,6 +29,11 @@ app.use(
     })
 );
 
+app.use(function(req, res, next) {
+    res.locals.member = req.session.member;
+    next();
+})
+
 // Views Code
 app.set("views", "views");
 app.set("view engine", "ejs");
