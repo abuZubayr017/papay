@@ -75,6 +75,15 @@ restaurantController.logout = (req, res) => {
     res.send("Logout Pagedasiz");
 }
 
+restaurantController.validateAuthRestaurant =  (req,res,next) => {
+    if(req.session?.member?.mb_type === "RESTAURANT") {
+        req.member = req.session.member;
+        next();
+    }else {
+        res.json({state: "fail", message: "only authenticated members with restaurant type"});
+    }
+}
+
 restaurantController.checkSessions = (req, res) => {
     if(req.session?.member) {
         res.json({state: "Succeed", data: req.session.member});
