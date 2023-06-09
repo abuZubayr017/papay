@@ -1,14 +1,11 @@
-function findDigits(text) {
-    let splitted = text.split('');
-    let res = [];
-    for(let i=0; i < splitted.length; i++) {
-        let a = Number(splitted[i])
-        if(a){
-            res.push(a);
-        }
-    }
-    return res.join('');
-}
+const magazine = "Lorem kill ipsum doler sit you can make him cry me ver right";
+const note = "you kill me ipsum";
+const result = canMurderWrite(note)
+console.log('killer yoza oladimi', result);
 
-let res = findDigits('ad5we34jkf89');
-console.log(res);
+
+function canMurderWrite(note) {
+    const mag_list = magazine.split(' ');
+    const note_list = note.split(' ');
+    return note_list.every(word => mag_list.includes(word));
+}
