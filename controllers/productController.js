@@ -21,16 +21,16 @@ productController.addNewProduct = async (req, res) => {
     const product = new Product();
     let data = req.body;
 
-    data.product_images = req.files.map(ele => {
-      return ele.path
-    })
+    data.product_images = req.files.map((ele) => {
+      return ele.path;
+    });
 
     const result = await product.addNewProductData(data, req.member);
-    
+
     const html = `<script>
                       alert("new dish added successfully");
                       window.location.replace('/resto/products/menu');
-                  </script>`
+                  </script>`;
     res.end(html);
   } catch (err) {
     console.log(`Error, cont/addNewProduct, ${err.message}`);
@@ -39,8 +39,17 @@ productController.addNewProduct = async (req, res) => {
 
 productController.updateChosenProduct = async (req, res) => {
   try {
-    console.log(`POST, cont/updateChosenProduct, ${err.message}`);
+    console.log(`POST, cont/updateChosenProduct`);
+    const product = new Product();
+    const id = req.params.id;
+    const result = await product.updateChosenProductData(
+      id,
+      req.body,
+      req.member._id
+    );
+    await res.json({state: "success", data: result});
   } catch (err) {
     console.log(`Error, cont/updateChosenProduct, ${err.message}`);
+    res.json({ state: "fail", message: err.message });
   }
 };
