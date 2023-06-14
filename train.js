@@ -8,4 +8,4 @@ function canMurderWrite(note) {
     const mag_list = magazine.split(' ');
     const note_list = note.split(' ');
     return note_list.every(word => mag_list.includes(word));
-}
+}   

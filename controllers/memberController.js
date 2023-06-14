@@ -25,6 +25,7 @@ memberController.login = async (req, res) => {
         const data = req.body;
         const member = new Member();
         const new_member = await member.loginData(data);
+        console.log(new_member);
 
         res.json({state: 'succeed', data: new_member});
     }catch(err) {
