@@ -45,9 +45,8 @@ restaurantController.signupProcess = async (req, res) => {
     assert(req.file, Definer.gereral_err3);
 
     let new_member = req.body;
-    new_member.mb_type = 'RESTAURANT';
+    new_member.mb_type = "RESTAURANT";
     new_member.mb_image = req.file.path;
-
 
     const member = new Member();
     const result = await member.signupData(new_member);
@@ -90,8 +89,15 @@ restaurantController.loginProcess = async (req, res) => {
 };
 
 restaurantController.logout = (req, res) => {
-  console.log("GET--Logout");
-  res.send("Logout Pagedasiz");
+  try {
+    console.log("GET: cont/logout");
+    req.session.destroy(function () {
+      res.redirect("/resto");
+    });
+  } catch (err) {
+    console.log("ERROR: cont/logout");
+    res.json({ state: "fail", message: err.message });
+  }
 };
 
 restaurantController.validateAuthRestaurant = (req, res, next) => {

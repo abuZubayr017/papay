@@ -117,6 +117,7 @@
         if (window.FileReader) {
           const uploading_file = $(this)[0].files[0];
           const fileType = uploading_file["type"];
+          console.log("filetype", fileType);
           const validImageTypes = ["image/jpg", "image/jpeg", "image/png"];
           if (!validImageTypes.includes(fileType)) {
             alert(
@@ -124,7 +125,7 @@
             );
           } else {
             if (uploading_file) {
-              console.log(URL.createObjectURL(uploading_file));
+              console.log("loggg",URL.createObjectURL(uploading_file));
               $(".upload_img_frame")
                 .attr("src", URL.createObjectURL(uploading_file))
                 .addClass("success");
@@ -135,6 +136,7 @@
         }
 
         $(this).siblings(".upload-name").val(filename);
+        
       });
     });
 
