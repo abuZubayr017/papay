@@ -226,7 +226,7 @@
     </div>
   </div>   
 
-<script>
+<script>  
 
   $(function() {
 
@@ -251,9 +251,8 @@
       const product_status = $(`#${id}.new_product_status`).val();
 
       try{
-        const response = await axios.post( `/resto/products/edit/${id}`, {id: id, product_status: product_status});
+        const response = await axios.post(`/resto/products/edit/${id}`, {id: id, product_status: product_status});
         const result = response.data;
-        console.log('result',result);
 
         if(result.state == 'success'){
           alert("success");
@@ -298,9 +297,11 @@
       if(file){
         let reader = new FileReader();
         reader.onload = function() {
+          
+          console.log(reader.result)
           $(`#image_section_${order}`).attr('src', reader.result);
         }
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file );
       }
     }
   }
