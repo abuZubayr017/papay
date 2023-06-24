@@ -143,6 +143,19 @@ restaurantController.getAllRestaurants = async (req, res) => {
     res.render("all-restaurants", {restaurants_data: restaurants_data});
   } catch (err) {
     console.log("ERROR: cont/getAllRestaurants");
-    res.json({ state: "fail", message: "you are not authenticated" });
+    res.json({ state: "fail", message: err.message });
   }
 };
+
+restaurantController.updateRestaurantByAdmin = async (req, res) => {
+  try {
+    console.log("POST: cont/.updateRestaurantByAdmin");
+
+    const restaurant = new Restaurant();
+    const result = await restaurant.updateRestaurantByAdminData(req.body);
+    await res.json({state: 'success', data: result});
+  } catch (err) {
+    console.log("ERROR: cont/.updateRestaurantByAdmin");
+    res.json({ state: "fail", message: err.message });
+  }
+}

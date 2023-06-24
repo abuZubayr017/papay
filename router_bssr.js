@@ -37,9 +37,14 @@ router_bssr.post(
 );
 
 router_bssr.get(
-  "/all-restaurant", 
+  "/all-restaurant",
   restaurantController.validateAdmin,
   restaurantController.getAllRestaurants
+);
+
+router_bssr.post("/all-restaurant/edit",
+  restaurantController.validateAdmin,
+  restaurantController.updateRestaurantByAdmin
 );
 
 module.exports = router_bssr;
